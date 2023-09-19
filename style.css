@@ -2,3 +2,20 @@ body
 {
 background-color: rgb(15, 15, 15);
 }
+#input
+{
+width: 500px;
+}
+.container
+{
+display: flex;
+}
+.box
+{
+    color: white;
+flex: 2;
+}
+#currentWeatherDiv
+{
+
+}
