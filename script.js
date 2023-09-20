@@ -58,7 +58,43 @@ async function getWeather(){
 
         tbodyElement.appendChild(newTheadEl);
     }
-    console.log(hours);
     
+    //getting the 7 day forecast
+    const sevenDayForecastUrl = `http://api.weatherapi.com/v1/forecast.json?key=26b117396f9a48aeb0a164550231809&q=${cityName.value}&days=7`
+    const res = await fetch(sevenDayForecastUrl);
+    const data2 = await res.json();
+
+    console.log(data2);
+    //TO DO: FIX destructuring here!
+    let { current2 = data2.current, forecast2 = data2.forecast, location2 = data2.location} = data2;
+
+    //filling the table with content
+    const upcommingTableEl = document.getElementById('upcomming');
+    const upcommingTbodyEl = document.getElementById('upcommingBody');
+
+    for(let i = 0; i < forecast2.forecastday.length; i++){
+        let trEl = document.createElement('tr');
+        let tdEl = document.createElement('td');
+        let imgTd = document.createElement('td');
+        let imgEl = document.createElement('img');
+        let infoTdEl = document.createElement('td');
+        let tempInfoEl = document.createElement('td');
+
+        let maxTemp = forecast2.forecastday[i].day.maxtemp_c;
+        let minTemp = forecast2.forecastday[i].day.mintemp_c;
+        tempInfoEl.textContent = maxTemp + '/' + minTemp;
+
+        imgEl.src = forecast2.forecastday[i].day.condition.icon;
+        infoTdEl.textContent = forecast2.forecastday[i].day.condition.text;
+        tdEl.textContent = forecast2.forecastday[i].date;
+        imgTd.appendChild(imgEl)
+        trEl.appendChild(tdEl);
+        trEl.appendChild(imgTd);
+        trEl.appendChild(infoTdEl);
+        trEl.appendChild(tempInfoEl);
+        upcommingTbodyEl.appendChild(trEl);
+    }
+
+    console.log(forecast2);
 }
 
