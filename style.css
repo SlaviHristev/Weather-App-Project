@@ -1,6 +1,6 @@
 body
 {
-background-color: rgb(15, 15, 15);
+background-color: rgb(69, 197, 236);
 }
 #input
 {
@@ -17,5 +17,35 @@ flex: 2;
 }
 #currentWeatherDiv
 {
-
+display:flex
+}
+#name
+{
+font-family: 'Times New Roman', Times, serif;
+font-size: 30px;
+position: fixed;
+}
+#degrees
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 40px;
+margin-top: 150px;
+}
+#degrees::after
+{
+content: "\00B0";
+}
+#icon
+{
+margin-left: 250px;
+width: 200px
+}
+#hourly{
+    display: none;
+    color: white;
+    font-size: 20px;
+}
+#tbody{
+    display: flexbox;
+    flex:auto;
 }
