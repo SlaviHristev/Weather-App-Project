@@ -4,7 +4,7 @@ background-color: rgb(69, 197, 236);
 }
 #input
 {
-width: 500px;
+width: 700px;
 }
 .container
 {
@@ -12,16 +12,18 @@ display: flex;
 }
 .box
 {
-    color: white;
+color: white;
 flex: 2;
 }
 #currentWeatherDiv
 {
+padding-right: 250px;
 display:flex
 }
 #name
 {
-font-family: 'Times New Roman', Times, serif;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:600;
 font-size: 30px;
 position: fixed;
 }
@@ -41,11 +43,32 @@ margin-left: 250px;
 width: 200px
 }
 #hourly{
+    margin-top: 100px;
+    border: solid;
+    border-color: transparent;
+    border-radius: 20px;
+    background-color: rgb(68, 57, 57);
     display: none;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
+    text-align: center;
+    width: 850px;
+}
+#hourly th{
+    border-right: solid;
+    
+}
+#hourly th:last-child{
+    border-right: none;
 }
 #tbody{
     display: flexbox;
     flex:auto;
+}
+#hourly td::after
+{
+content: "\00B0";
+}
+#hourly td{
+    padding-left: 38px;
 }

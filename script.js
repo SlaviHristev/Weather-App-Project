@@ -15,10 +15,12 @@ async function getWeather(){
     //destructure the data
     let {current, forecast, location} = data;
 
-    //making city name and attaching it to the DOM
+    //making city name and condition and attaching it to the DOM
     let cityNamePEl = document.createElement('p');
     cityNamePEl.id = 'name';
-    cityNamePEl.textContent = location.name;
+    let locationName = location.name;
+    let condition = current.condition.text;
+    cityNamePEl.innerHTML = locationName + "<br>" + condition;
     currentWeatherDiv.appendChild(cityNamePEl)
 
     //making temperature p and attaching it
@@ -37,8 +39,8 @@ async function getWeather(){
     let tbodyElement = document.getElementById('tbody')
     const hours = forecast.forecastday[0].hour;
     hourlyTable.style.display = 'block';
-    for(let i = 0; i < hours.length; i+=3){
 
+        for(let i = 0; i < hours.length - 2; i+=3){
         let newTrForHead = document.createElement('tr');
         let newTheadEl = document.createElement('th');
         let newTdEl = document.createElement('td');
@@ -53,9 +55,8 @@ async function getWeather(){
         newTdEl.textContent = hours[i].temp_c;
         newTheadEl.appendChild(newTdEl);
         newTheadEl.appendChild(newPicEl)
-        tbodyElement.appendChild(newTheadEl);
-        
 
+        tbodyElement.appendChild(newTheadEl);
     }
     console.log(hours);
     
