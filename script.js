@@ -1,11 +1,14 @@
-const cityName = document.getElementById('input');
-document.getElementById('submitBtn').addEventListener('click',getWeather);
+const inputField = document.getElementById('input');
 const currentWeatherDiv = document.getElementById('currentWeatherDiv');
+inputField.addEventListener('keypress',getWeather);
 
-
-async function getWeather(){
+async function getWeather(e){
     //Get the url needed and load the current and upcomming weather
-    const currentWeatherUrl = `http://api.weatherapi.com/v1/forecast.json?key=26b117396f9a48aeb0a164550231809&q=${cityName.value}`;
+    if(e.key === "Enter"){
+        e.preventDefault();
+
+    
+    const currentWeatherUrl = `http://api.weatherapi.com/v1/forecast.json?key=26b117396f9a48aeb0a164550231809&q=${inputField.value}`;
     
 
     const response = await fetch(currentWeatherUrl);
@@ -26,7 +29,7 @@ async function getWeather(){
     //making temperature p and attaching it
     let temperaturePel = document.createElement('p');
     temperaturePel.id = 'degrees';
-    temperaturePel.textContent = current.feelslike_c;
+    temperaturePel.textContent = current.temp_c;
     currentWeatherDiv.appendChild(temperaturePel);
 
     // making the icon picture and attaching it
@@ -60,7 +63,7 @@ async function getWeather(){
     }
     
     //getting the 7 day forecast
-    const sevenDayForecastUrl = `http://api.weatherapi.com/v1/forecast.json?key=26b117396f9a48aeb0a164550231809&q=${cityName.value}&days=7`
+    const sevenDayForecastUrl = `http://api.weatherapi.com/v1/forecast.json?key=26b117396f9a48aeb0a164550231809&q=${inputField.value}&days=7`
     const res = await fetch(sevenDayForecastUrl);
     const data2 = await res.json();
 
@@ -94,7 +97,22 @@ async function getWeather(){
         trEl.appendChild(tempInfoEl);
         upcommingTbodyEl.appendChild(trEl);
     }
+    upcommingTableEl.style.display = 'table';
 
-    console.log(forecast2);
+    //creating conditions for the day table and filling it with data
+
+
+    const trOneEl = document.createElement('tr');
+    const trTwoEl = document.createElement('tr');
+    const realFeelTd = document.createElement('td');
+    const windTd = document.createElement('td');
+    const rainTd = document.createElement('td');
+    const uvTd = document.createElement('td');
+
+    realFeelTd.textContent = current.feelslike_c;
+    trOneEl.appendChild(realFeelTd);
+    
+
+}
 }
 

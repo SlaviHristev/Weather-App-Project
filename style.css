@@ -1,23 +1,29 @@
 body
 {
 background-color: rgb(69, 197, 236);
-
+}
+.container{
+    height: 200px;
 }
 #upcommingWeatherDiv{
-font-size: 15px;
-height: 300px;
+font-size: 10px;
+height: 250px;
+width: 50%;
+margin-left: 100px;
 }
 #upcomming{
      background-color: rgb(68, 57, 57);
      border-radius: 20px;
      font-family: Arial, Helvetica, sans-serif;
+     height: 300px;
+     display: none;
+}
+#upcommingBody td{
+    height: 15px;
+    padding-right: 10px;
 }
 #upcommingBody td {
     border-bottom: white solid 0.5px;
-}
-#upcommingBody td{
-    padding: 10px;
-
 }
 #input
 {
@@ -34,7 +40,6 @@ flex: 2;
 }
 #currentWeatherDiv
 {
-padding-right: 300px;
 display:flex
 }
 #name
@@ -48,7 +53,7 @@ position: fixed;
 {
 font-family: Arial, Helvetica, sans-serif;
 font-size: 40px;
-margin-top: 150px;
+margin-top: 120px;
 }
 #degrees::after
 {
@@ -56,11 +61,11 @@ content: "\00B0";
 }
 #icon
 {
-margin-left: 250px;
+margin-left: 200px;
+margin-bottom: 20px;
 width: 200px
 }
 #hourly{
-    margin-top: 100px;
     border-color: transparent;
     border-radius: 20px;
     background-color: rgb(68, 57, 57);
@@ -68,7 +73,7 @@ width: 200px
     color: white;
     font-size: 15px;
     text-align: center;
-    width: 800px;
+    width: 700px;
 }
 #hourly th{
     border-right: solid;
@@ -86,5 +91,5 @@ width: 200px
 content: "\00B0";
 }
 #hourly td{
-    padding-left: 38px;
+    padding-left: 24px;
 }
