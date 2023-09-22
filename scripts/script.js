@@ -23,16 +23,18 @@ async function getWeather(e) {
         const containerDiv = createElement('div', { class: 'container' }, null, document.body);
         const currentWeatherDiv = createElement('div', { class: 'box', id: 'currentWeatherDiv' }, null, containerDiv);
         const upcommingDiv = createElement('div', { class: 'box', id: 'upcommingWeatherDiv' }, null, containerDiv);
-        const cityNamePel = createElement2('p', { id: 'name', }, location.name + '<br>' + current.condition.text, currentWeatherDiv);
+        const cityNamePel = createElement2('p', { id: 'name', class: 'slideRight' }, location.name + '<br>' + current.condition.text, currentWeatherDiv);
 
         //making temperature p and attaching it
-        const temperaturePel = createElement('p', { id: 'degrees' }, current.temp_c, currentWeatherDiv);
+        const temperaturePel = createElement('p', { id: 'degrees', class: 'slideRight' }, current.temp_c, currentWeatherDiv);
 
         // making the icon picture and attaching it
-        const imgElem = createElement('img', { id: 'icon', src: current.condition.icon }, null, currentWeatherDiv);
+        const imgElem = createElement('img', { id: 'icon', class:'fadeIn', src: current.condition.icon }, null, currentWeatherDiv);
+        imgElem.style.opacity = 1;
 
         //making a table about the hourly degrees
         const hourlyTable = createElement('table', { id: 'hourly' }, null, document.body);
+        hourlyTable.classList.add('slideRight')
         const tbodyElement = createElement('tbody', { id: 'tbody' }, null, hourlyTable);
         const hours = forecast.forecastday[0].hour;
         hourlyTable.style.display = 'block';
@@ -54,8 +56,9 @@ async function getWeather(e) {
         let { current2 = data2.current, forecast2 = data2.forecast, location2 = data2.location } = data2;
 
         //filling the table with content
-        const upcommingTableEl = createElement('table', { id: 'upcomming' }, null, upcommingDiv);
+        const upcommingTableEl = createElement('table', { id: 'upcomming'}, null, upcommingDiv);
         const upcommingTbodyEl = createElement('tbody', { id: 'upcommingBody' }, null, upcommingTableEl);
+        upcommingTableEl.classList.add('slideDown');
 
         for (let i = 0; i < forecast2.forecastday.length; i++) {
             const trEl = createElement('tr', {}, null, upcommingTbodyEl);
@@ -68,35 +71,6 @@ async function getWeather(e) {
         upcommingTableEl.style.display = 'table';
 
         //creating conditions for the day table and filling it with data
-
-
-
-        function clearWeatherInfo() {
-            // Remove or replace elements that contain the previously loaded weather information
-            const currentWeatherDiv = document.getElementById('currentWeatherDiv');
-            const hourlyTable = document.getElementById('hourly');
-            const upcommingTableEl = document.getElementById('upcomming');
-            const containerEl = document.querySelector('.container');
-            const upcomingDiv = document.getElementById('upcommingWeatherDiv');
-
-            if(containerEl){
-                containerEl.remove();
-            }
-            if(upcomingDiv){
-                upcomingDiv.remove();
-            }
-            if (currentWeatherDiv) {
-                currentWeatherDiv.remove(); // Remove the current weather container
-            }
-
-            if (hourlyTable) {
-                hourlyTable.remove(); // Remove the hourly table
-            }
-
-            if (upcommingTableEl) {
-                upcommingTableEl.remove(); // Remove the upcoming table
-            }
-         }
 
 
     }
