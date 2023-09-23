@@ -5,6 +5,15 @@ background-color: rgb(69, 197, 236);
 #input{
     border-radius: 30px;
     border: transparent;
+    width: 650px;
+    padding: 5px;
+    transition: width 1s ease-in-out
+}
+#input:hover{
+    cursor: pointer;
+    width: 670px;
+    
+
 }
 nav{
     text-align:right;
@@ -31,10 +40,6 @@ margin-left: 100px;
 }
 #upcommingBody td {
     border-bottom: white solid 0.5px;
-}
-#input
-{
-width: 700px;
 }
 .container
 {
