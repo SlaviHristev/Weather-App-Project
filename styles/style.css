@@ -2,6 +2,15 @@ body
 {
 background-color: rgb(69, 197, 236);
 }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:  rgb(68, 57, 57);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+  }
 #input{
     border-radius: 30px;
     border: transparent;
@@ -12,13 +21,28 @@ background-color: rgb(69, 197, 236);
 #input:hover{
     cursor: pointer;
     width: 670px;
-    
-
 }
-nav{
-    text-align:right;
 
-}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
 .container{
     height: 200px;
 }
@@ -29,6 +53,7 @@ width: 50%;
 margin-left: 100px;
 }
 #upcomming{
+    margin-top: 20px;
      background-color: rgb(68, 57, 57);
      border-radius: 20px;
      font-family: Arial, Helvetica, sans-serif;
@@ -107,3 +132,35 @@ content: "\00B0";
 #hourly td{
     padding-left: 24px;
 }
+#conditionsTable {
+    color: white;
+    background-color:rgb(68, 57, 57);
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    border: none;
+    border-collapse: collapse;
+    width: 700px;
+  }
+  
+  #conditionsTable th, #conditionsTable td {
+    padding: 8px;;
+  }
+  
+  #conditionsTable td{
+    padding-left: 150px;
+  }
+  
+  #conditionsTable tbody tr:first-child th:first-child,
+  #conditionsTable tbody tr:first-child th:last-child {
+    text-align: center;
+    padding-right: 10px;
+  }
+  
+  #conditionsTable tbody tr:first-child th:first-child,
+  #conditionsTable tbody tr:first-child th:last-child {
+    width: 50%;
+    
+  }
+  

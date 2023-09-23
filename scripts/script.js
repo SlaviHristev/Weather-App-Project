@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', async() =>{
     renderCurrentWeather(weatherData);
     renderSevenDayForecast(weatherData2);
     renderHourlyForecast(weatherData);
+    renderConditionsForDay(weatherData);
 })
-
 
 
 async function handleKeyPress(e) {
@@ -26,9 +26,11 @@ async function handleKeyPress(e) {
         clearWeatherInfo();
         const weatherData = await fetchWeatherData(inputField.value);
         const weatherData2 = await fetchWeatherData2(inputField.value);
+        console.log(weatherData);
         renderCurrentWeather(weatherData);
         renderSevenDayForecast(weatherData2);
         renderHourlyForecast(weatherData);
+        renderConditionsForDay(weatherData);
     }
 }
 
@@ -83,4 +85,22 @@ function renderSevenDayForecast(data) {
         const tempInfoEl = createElement('td', {}, forecast.forecastday[i].day.maxtemp_c + '/' + forecast.forecastday[i].day.condition.text, trEl);
     }
     upcommingTableEl.style.display = 'table';
+}
+
+function renderConditionsForDay(data){
+    const conditionTable = createElement('table',{id:'conditionsTable',class:'slideUp'},null,document.body);
+    const conditionTbodyEl = createElement('tbody',{id:'condTbodyEl'},null,conditionTable);
+    
+        const condTrowEl1 = createElement('tr',{class:'tr1'},null,conditionTbodyEl);
+        const condTheadEl1 = createElement('th',{},'🌡️ Real Feel', condTrowEl1);
+        const condTdEl1 = createElement('td',{},data.current.feelslike_c,condTheadEl1);
+        const condtThead2 = createElement('th',{},'💨 Wind', condTrowEl1);
+        const condTdEl2 = createElement('td', {}, data.current.wind_kph + ' k/ph',condtThead2);
+        const forecast = data.forecast;
+
+        const condTrowEl2 = createElement('tr',{class:'tr2'},null,conditionTbodyEl);
+        const condTheadEl3 = createElement('th',{},'☔ Chance Of Rain', condTrowEl2);
+        const condTdEL3 = createElement('td',{},forecast.forecastday[0].day.daily_chance_of_rain + '%', condTheadEl3);
+        const condTheadEl4 = createElement('th',{},'☀️ UV Index', condTrowEl2);
+        const condTdEl4 = createElement('td',{},data.current.uv,condTheadEl4);
 }

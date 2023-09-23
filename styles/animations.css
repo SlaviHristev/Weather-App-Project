@@ -36,3 +36,15 @@
   animation: fadeIn 1s ease-in; 
   opacity: 1;
 }
+@keyframes slideUp {
+  from{
+      transform:translateY(800px);
+  }
+  to{
+      transform: translateY(0px);
+  }
+}
+
+.slideUp{
+  animation: slideUp 1s ease-in;
+}

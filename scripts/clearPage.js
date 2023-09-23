@@ -5,6 +5,7 @@ export function clearWeatherInfo() {
     const upcommingTableEl = document.getElementById('upcomming');
     const containerEl = document.querySelector('.container');
     const upcomingDiv = document.getElementById('upcommingWeatherDiv');
+    const conditionsTable = document.getElementById('conditionsTable');
 
     if(containerEl){
         containerEl.remove();
@@ -22,5 +23,8 @@ export function clearWeatherInfo() {
 
     if (upcommingTableEl) {
         upcommingTableEl.remove(); 
+    }
+    if(conditionsTable){
+        conditionsTable.remove();
     }
  }
