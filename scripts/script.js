@@ -4,9 +4,24 @@ inputField.addEventListener('keypress', handleKeyPress);
 import { createElement } from "./createEl.js";
 import { createElement2 } from "./createEl.js";
 import { clearWeatherInfo } from "./clearPage.js";
+import { fetchUserCity } from "./geolocation.js";
+
+
+
+document.addEventListener('DOMContentLoaded', async() =>{
+    const curCity = await fetchUserCity();
+    const weatherData = await fetchWeatherData(curCity);
+    const weatherData2 = await fetchWeatherData2(curCity);
+    renderCurrentWeather(weatherData);
+    renderSevenDayForecast(weatherData2);
+    renderHourlyForecast(weatherData);
+})
+
+
 
 async function handleKeyPress(e) {
     if (e.key === "Enter") {
+        
         e.preventDefault();
         clearWeatherInfo();
         const weatherData = await fetchWeatherData(inputField.value);
