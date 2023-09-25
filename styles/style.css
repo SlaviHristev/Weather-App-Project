@@ -25,20 +25,24 @@ background-color: rgb(69, 197, 236);
 
 
 nav ul {
-    list-style: none;
+  background-color: rgb(68, 57, 57);
+    display: flex;
     padding: 0;
     margin: 0;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   nav li {
+    font-size: 20px;
     display: inline;
-    margin-right: 20px;
+    margin-right: 25px;
   }
   
   nav a {
     text-decoration: none;
     color: #fff;
-  }
+    
+ }
   
   nav a:hover {
     text-decoration: underline;
@@ -164,3 +168,29 @@ content: "\00B0";
     
   }
   
+
+
+
+nav a {
+    display: table-cell;
+    padding: 10px 10px;
+}
+
+
+.citiesNames {
+    display: none;
+    position: absolute;
+    background-color: rgb(68, 57, 57);
+    border-radius: 30px;
+    
+}
+
+.cities:hover .citiesNames {
+    display: block;
+}
+
+
+.citiesNames li {
+    padding: 10px;
+    text-decoration: none;
+}

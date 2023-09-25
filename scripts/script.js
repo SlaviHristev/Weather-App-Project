@@ -34,6 +34,18 @@ async function handleKeyPress(e) {
     }
 }
 
+document.querySelector('.citiesNames').addEventListener('click', async (e) =>{
+    e.preventDefault();
+    clearWeatherInfo();
+    const weatherData = await fetchWeatherData(e.target.textContent);
+    const weatherData2 = await fetchWeatherData2(e.target.textContent);
+    console.log(weatherData);
+    renderCurrentWeather(weatherData);
+    renderSevenDayForecast(weatherData2);
+    renderHourlyForecast(weatherData);
+    renderConditionsForDay(weatherData);
+})
+
 async function fetchWeatherData(cityName) {
     const currentWeatherUrl = `http://api.weatherapi.com/v1/forecast.json?key=26b117396f9a48aeb0a164550231809&q=${cityName}`;
     const response = await fetch(currentWeatherUrl);
